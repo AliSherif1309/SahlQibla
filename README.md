@@ -1,13 +1,13 @@
-# True Qibla — Android
+# سهل للقبلة · Sahl Qibla — Android
 
-**القبلة الدقيقة** — a Qibla compass that checks itself.
+**سهل للقبلة** — a Qibla compass that checks itself. Part of the **Sahl apps** family (Sahl Adhan, Sahl TV, Sahl Files…). Formerly *True Qibla*.
 
 **⬇ Download:** [TrueQibla.apk](https://github.com/AliSherif1309/TrueQibla-Android/releases/latest/download/TrueQibla.apk). Open it on your Android phone to install (Android 8 or newer).
 
 ## In-app updates (1.6+)
-Install a release containing this feature once. Thereafter the app checks GitHub for a newer release at most once per day when opened. You can also use **Settings → Check for updates**. Tap **Update** to download, then **Install**. Android may first ask you to allow installations from True Qibla; return to the app after granting permission. Android still confirms each installation. Existing app settings are preserved when updating a compatible installation.
+Install a release containing this feature once. Thereafter the app checks GitHub for a newer release at most once per day when opened. You can also use **Settings → Check for updates**. Tap **Update** to download, then **Install**. Android may first ask you to allow installations from Sahl Qibla; return to the app after granting permission. Android still confirms each installation. Existing app settings are preserved when updating a compatible installation.
 
-The compass works offline. Only update checking/downloading uses the network; no coordinates or sensor readings are sent. GitHub receives normal network request metadata such as your IP address. Downloads use Android's Download Manager and continue if you leave the app. Reopen True Qibla to verify and install a finished download. Automatic checks fail quietly offline; manual checks show a retry message.
+The compass works offline. Only update checking/downloading uses the network; no coordinates or sensor readings are sent. GitHub receives normal network request metadata such as your IP address. Downloads use Android's Download Manager and continue if you leave the app. Reopen Sahl Qibla to verify and install a finished download. Automatic checks fail quietly offline; manual checks show a retry message.
 
 Updates are accepted only from this repository's HTTPS release URLs and must match the release's SHA-256 checksum, size, package name, higher version code and the installed app's signing certificate. A debug APK cannot normally update to the official release because the keys differ. Signing-key rotation is deliberately not accepted by this updater.
 
