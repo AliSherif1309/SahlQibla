@@ -46,5 +46,5 @@ jobs:
           tag="build-${GITHUB_RUN_NUMBER}"
           version="$(python -c 'import json; print(json.load(open("update.json"))["versionName"])')"
           gh release create "$tag" TrueQibla.apk update.json --draft --target "$GITHUB_SHA" --title "Sahl Qibla ${version} (build ${GITHUB_RUN_NUMBER})" \
-            --notes "Build ${GITHUB_RUN_NUMBER} (${GITHUB_SHA::7}). Includes in-app updates. Install **TrueQibla.apk** once; future releases can be downloaded from Settings inside the app. Android confirms installation."
+            --notes "$(git log -1 --format=%s)"
           gh release edit "$tag" --draft=false --latest
