@@ -9,6 +9,7 @@ val keystorePath: String? = System.getenv("SIGNING_KEYSTORE_PATH")
 
 android {
     namespace = "com.aly.trueqibla"
+    buildFeatures { buildConfig = true }
     compileSdk = 34
 
     defaultConfig {
