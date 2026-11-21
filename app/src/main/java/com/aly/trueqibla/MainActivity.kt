@@ -213,6 +213,7 @@ class MainActivity : Activity(), SensorEventListener, LocationListener {
 
     @Suppress("DEPRECATION")
     override fun onCreate(savedInstanceState: Bundle?) {
+        SahlCore.catchCrashes(this)
         super.onCreate(savedInstanceState)
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         window.statusBarColor = BG

@@ -19,7 +19,7 @@ import java.util.Locale
  * Uses inexact alarms (no special permission). Rescheduled on every app start and after a reboot.
  */
 object Reminders {
-    private const val CHANNEL = "sun_over_kaaba"
+    private const val CHANNEL = "sun_over_kaaba_chime"
 
     fun enabled(ctx: Context) = ctx.getSharedPreferences("qibla", Context.MODE_PRIVATE).getBoolean("remind", false)
 
@@ -50,7 +50,7 @@ object Reminders {
     fun notify(ctx: Context, ev: Long, kind: String) {
         val nm = ctx.getSystemService(NotificationManager::class.java) ?: return
         val ar = arabic(ctx)
-        nm.createNotificationChannel(NotificationChannel(CHANNEL,
+        nm.createNotificationChannel(SahlCore.chimeChannel(ctx, CHANNEL,
             if (ar) "الشمس فوق الكعبة" else "Sun over the Kaaba", NotificationManager.IMPORTANCE_DEFAULT))
         val time = DateTimeFormatter.ofPattern("HH:mm", Locale.US).format(Instant.ofEpochMilli(ev).atZone(ZoneId.systemDefault()))
         val title = if (ar) "☀️ الشمس فوق الكعبة" else "☀️ Sun over the Kaaba"
