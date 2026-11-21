@@ -17,13 +17,14 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
       - name: Build signed release APK
         env:
-          KEYSTORE_B64: ${{ secrets.SIGNING_KEYSTORE_BASE64 }}
-          SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
-          SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
-          SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
+          # The shared Sahl key (same secrets as every Sahl app) — required for Sahl Union
+          KEYSTORE_B64: ${{ secrets.KEYSTORE_B64 }}
+          SIGNING_STORE_PASSWORD: ${{ secrets.KEYSTORE_PASS }}
+          SIGNING_KEY_ALIAS: sahl
+          SIGNING_KEY_PASSWORD: ${{ secrets.KEYSTORE_PASS }}
         run: |
           if [ -z "$KEYSTORE_B64" ]; then
-            echo "A persistent signing keystore is required for in-app updates. Configure the SIGNING_KEYSTORE_BASE64 and SIGNING_* secrets."
+            echo "The Sahl signing key is required. Add the KEYSTORE_B64 and KEYSTORE_PASS secrets (same as the other Sahl apps)."
             exit 1
           fi
           echo "$KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/release.jks"

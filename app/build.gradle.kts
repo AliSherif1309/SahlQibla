@@ -13,12 +13,13 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.aly.trueqibla"
+        // Sahl family package (code stays in com.aly.trueqibla)
+        applicationId = "com.sahl.qibla"
         minSdk = 26
         targetSdk = 34
         // Every cloud build gets a higher number, so a new APK installs over the old one.
         versionCode = 100 + (System.getenv("GITHUB_RUN_NUMBER")?.toIntOrNull() ?: 0)
-        versionName = "1.6"
+        versionName = "2." + (System.getenv("GITHUB_RUN_NUMBER") ?: "0")
     }
 
     signingConfigs {
