@@ -17,9 +17,10 @@ android {
         applicationId = "com.sahl.qibla"
         minSdk = 26
         targetSdk = 34
-        // Every cloud build gets a higher number, so a new APK installs over the old one.
-        versionCode = 100 + (System.getenv("GITHUB_RUN_NUMBER")?.toIntOrNull() ?: 0)
-        versionName = "2." + (System.getenv("GITHUB_RUN_NUMBER") ?: "0")
+        val run = (System.getenv("GITHUB_RUN_NUMBER") ?: "1").toInt()
+        // Keep 100 + run so upgrades from earlier 2.x (build-20..22) builds never downgrade versionCode.
+        versionCode = 100 + run
+        versionName = "1.$run"
     }
 
     signingConfigs {

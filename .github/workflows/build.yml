@@ -44,8 +44,8 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          tag="build-${GITHUB_RUN_NUMBER}"
           version="$(python -c 'import json; print(json.load(open("update.json"))["versionName"])')"
-          gh release create "$tag" TrueQibla.apk update.json --draft --target "$GITHUB_SHA" --title "Sahl Qibla ${version} (build ${GITHUB_RUN_NUMBER})" \
+          tag="v${version}"
+          gh release create "$tag" TrueQibla.apk update.json --draft --target "$GITHUB_SHA" --title "Sahl Qibla ${tag}" \
             --notes "$(git log -1 --format=%s)"
           gh release edit "$tag" --draft=false --latest
