@@ -6,3 +6,7 @@
 - Preserve text, spans, selection, accessibility font sizes, weights and RTL behavior. Do not restyle third-party Android widgets or PDF page/text-mode content.
 - Do not commit raw fonts or keys. Keep acquisition at build time and runtime typography offline. The packaged-font format follows the user's SahlTV implementation; obfuscation is not proof of license compliance.
 - Run typography tests, Android unit tests/lint/build and the final APK asset check. Submit a PR and merge only after relevant CI passes and the user authorizes merging.
+
+# GitHub workflow
+
+- When pushing changes to GitHub, always push a branch, open a pull request, and merge it into `main` (never push directly to `main`).
