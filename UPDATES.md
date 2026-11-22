@@ -8,7 +8,7 @@ English and Arabic strings are provided. A network failure never disables the co
 
 ## Validation and recovery
 
-- Release discovery uses the public GitHub latest-release API, excluding drafts/prereleases, and requires `update.json` and `TrueQibla.apk` in the same release.
+- Release discovery uses the public GitHub latest-release API, excluding drafts/prereleases, and requires `update.json` and a `.apk` asset (`SahlQibla-v1.<run>.apk`) in the same release.
 - Metadata and APK URLs must use HTTPS on github.com under the exact repository release path. No user-controlled update server is accepted. Cleartext traffic is disabled. GitHub's normal HTTPS asset redirects are supported by Android.
 - JSON is limited to 256 KiB with connection/read timeouts. The manifest must have a positive Android version code, a 64-digit hexadecimal SHA-256 and size <=50 MiB, matching the GitHub APK asset's reported size.
 - A finished download is copied to an app-private temporary file with bounded byte counting and SHA-256 verification. PackageManager then checks package identity, exact offered version, newer-than-installed version, compatible minimum SDK and equality of nonempty current APK signing-certificate sets. No key rotation/lineage exceptions are implemented.
@@ -19,7 +19,7 @@ English and Arabic strings are provided. A network failure never disables the co
 
 ## Release pipeline
 
-`scripts/make_update_manifest.py` reads the universal release APK and Gradle's `output-metadata.json`; it does not infer app version from the human-readable release title. `update.json` contains versionCode, versionName, SHA-256 and byte size. The workflow creates a draft `build-GITHUB_RUN_NUMBER` release, uploads both files, then publishes it as latest. This keeps existing releases and avoids advertising a release before both assets are present. The download link is `/releases/latest/download/TrueQibla.apk`.
+`scripts/make_update_manifest.py` reads the universal release APK and Gradle's `output-metadata.json`; it does not infer app version from the human-readable release title. `update.json` contains versionCode, versionName, SHA-256 and byte size. The workflow creates a draft `v1.<run>` release, uploads `SahlQibla-v1.<run>.apk` and `update.json`, then publishes it as latest. This keeps existing releases and avoids advertising a release before both assets are present.
 
 VersionCode continues to be `100 + GITHUB_RUN_NUMBER` in CI. Keep that workflow's run sequence and application ID stable. A rerun after an already-published `build-N` release will not overwrite it silently; use a new workflow run for a new release. Never rebuild and replace an APK in an existing release with a different binary.
 
