@@ -248,7 +248,7 @@ class MainActivity : Activity(), SensorEventListener, LocationListener {
             text = t("Sahl Qibla", "سهل للقبلة"); textSize = 22f; setTypeface(typeface, Typeface.BOLD); setTextColor(INK)
         }, LinearLayout.LayoutParams(0, WRAP_CONTENT, 1f))
         header.addView(TextView(this).apply {
-            text = t("⚙ Settings", "⚙ الإعدادات")
+            text = t("Settings", "الإعدادات")
             textSize = 15f; setTypeface(typeface, Typeface.BOLD); setTextColor(GREEN)
             setPadding(dp(14), dp(8), dp(14), dp(8))
             background = GradientDrawable().apply { setColor(Color.TRANSPARENT); setStroke(dp(1), GREEN); cornerRadius = dp(18).toFloat() }
@@ -550,6 +550,8 @@ class MainActivity : Activity(), SensorEventListener, LocationListener {
                 try { startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/AliSherif1309/TrueQibla-Android"))) } catch (_: Exception) {}
             }
         })
+        settingsView.addView(sectionTitle(t("Sahl Union", "اتحاد سهل")))
+        settingsView.addView(SahlUnionApps.strip(this, MUTED))
     }
 
     /** Forget the current direction (e.g. after changing the method) and find it again. */
