@@ -245,7 +245,7 @@ class MainActivity : Activity(), SensorEventListener, LocationListener {
         }
         val header = LinearLayout(this).apply { orientation = LinearLayout.HORIZONTAL; gravity = Gravity.CENTER_VERTICAL }
         header.addView(TextView(this).apply {
-            text = t("True Qibla", "القبلة الدقيقة"); textSize = 22f; setTypeface(typeface, Typeface.BOLD); setTextColor(INK)
+            text = t("Sahl Qibla", "سهل للقبلة"); textSize = 22f; setTypeface(typeface, Typeface.BOLD); setTextColor(INK)
         }, LinearLayout.LayoutParams(0, WRAP_CONTENT, 1f))
         header.addView(TextView(this).apply {
             text = t("⚙ Settings", "⚙ الإعدادات")
@@ -524,10 +524,10 @@ class MainActivity : Activity(), SensorEventListener, LocationListener {
             "${pi.versionName} (build $code)"
         } catch (_: Exception) { "" }
         settingsView.addView(TextView(this).apply {
-            text = t("True Qibla $ver\n\nPoints to the Kaaba using the great-circle direction from your GPS position, corrected to true north. " +
+            text = t("Sahl Qibla $ver\n\nPoints to the Kaaba using the great-circle direction from your GPS position, corrected to true north. " +
                        "The gyroscope keeps the arrow steady, and the magnetic field is checked against Earth's expected field at your location, " +
                        "but these checks cannot detect every magnetic disturbance.\n\nChecks GitHub for app updates once a day when opened. Downloads start only when you choose Update.\n\nFree and open source (MIT License). No ads, no tracking.",
-                     "القبلة الدقيقة $ver\n\nيشير إلى الكعبة باتجاه الدائرة العظمى من موقعك عبر GPS، مع التصحيح إلى الشمال الحقيقي. " +
+                     "سهل للقبلة $ver\n\nيشير إلى الكعبة باتجاه الدائرة العظمى من موقعك عبر GPS، مع التصحيح إلى الشمال الحقيقي. " +
                        "يحافظ الجيروسكوب على ثبات السهم، ويُقارَن المجال المغناطيسي بمجال الأرض المتوقع في موقعك، " +
                        "لكن هذه الفحوص لا تكشف كل تشويش مغناطيسي.\n\nيتحقق من تحديثات التطبيق عبر GitHub مرة يوميًا عند فتحه. يبدأ التنزيل فقط عند اختيار تحديث.\n\nمجاني ومفتوح المصدر (رخصة MIT). بلا إعلانات ولا تتبّع.")
             textSize = 14f; setTextColor(INK); setLineSpacing(0f, 1.15f); setPadding(dp(4), 0, dp(4), 0)
@@ -538,7 +538,7 @@ class MainActivity : Activity(), SensorEventListener, LocationListener {
             isClickable = true
             setOnClickListener {
                 try {
-                    startActivity(Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:alysherif1309@gmail.com?subject=" + Uri.encode("True Qibla feedback"))))
+                    startActivity(Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:alysherif1309@gmail.com?subject=" + Uri.encode("Sahl Qibla feedback"))))
                 } catch (_: Exception) {}
             }
         })
@@ -974,7 +974,7 @@ class MainActivity : Activity(), SensorEventListener, LocationListener {
         if (lat.isNaN()) {
             qView.qiblaRel = null; qView.invalidate()
             turnTv.text = t("Finding your location…", "جارٍ تحديد موقعك…")
-            setStatus(t("Turn on Location (GPS) and allow it for True Qibla. Being outdoors or near a window helps.",
+            setStatus(t("Turn on Location (GPS) and allow it for Sahl Qibla. Being outdoors or near a window helps.",
                         "شغّل الموقع (GPS) واسمح للتطبيق باستخدامه. يساعد الوقوف في مكان مفتوح أو قرب نافذة."), ORANGE, ORANGE_SOFT)
             meterTv.text = ""; infoTv.text = ""
             return
