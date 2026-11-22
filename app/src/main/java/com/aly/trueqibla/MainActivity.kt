@@ -746,7 +746,7 @@ class MainActivity : Activity(), SensorEventListener, LocationListener {
                 val vUp = bx * up[0] + by * up[1] + bz * up[2]
                 val dip = Math.toDegrees(asin((-vUp / b).coerceIn(-1.0, 1.0)))
                 latestStrength = b; latestDip = dip
-                val k = 0.12
+                val k = 0.28
                 bStrength = if (bStrength.isNaN()) b else bStrength + k * (b - bStrength)
                 bDip = if (bDip.isNaN()) dip else bDip + k * (dip - bDip)
                 if (rotSensor == null && gameSensor == null) fuse(now)
@@ -799,19 +799,19 @@ class MainActivity : Activity(), SensorEventListener, LocationListener {
             fairSince = 0L
             val o = offset
             if (o == null || src != Src.GOOD) {
-                if (now - goodSince > 800) { offset = d; src = Src.GOOD }
+                if (now - goodSince > 300) { offset = d; src = Src.GOOD }
             } else {
                 offset = Astro.norm180(o + follow * Astro.norm180(d - o))
             }
             lastGoodAt = now
         } else {
             goodSince = 0L
-            // Quick first arrow: accept a "fair" reading after 2 s, clearly labelled approximate.
+            // Quick first arrow: accept a "fair" reading after 0.7 s, clearly labelled approximate.
             if (method == "strict") {
                 fairSince = 0L                                       // strict: wait for a clean spot only
             } else if (usableSingle && calibrated() && src == Src.NONE) {
                 if (fairSince == 0L) fairSince = now
-                if (now - fairSince > 2000) { offset = d; src = Src.FAIR }
+                if (now - fairSince > 700) { offset = d; src = Src.FAIR }
             } else if (usableSingle && calibrated() && src == Src.FAIR) {
                 val o = offset ?: d
                 offset = Astro.norm180(o + follow * Astro.norm180(d - o))
@@ -838,14 +838,14 @@ class MainActivity : Activity(), SensorEventListener, LocationListener {
             if (quality != Q.GOOD) accAllGood = false
         }
         if (bucketStart == 0L) bucketStart = now
-        if (now - bucketStart < 1000) return
+        if (now - bucketStart < 600) return
         bucketStart = now
-        val newBucket = accN >= 5 && accW > 0
-        if (accN >= 5 && accW > 0) {
+        val newBucket = accN >= 3 && accW > 0
+        if (accN >= 3 && accW > 0) {
             val r = sqrt(accX * accX + accY * accY)
             // Motion groups are a heuristic, not proof of independent positions or errors.
             val bAvg = accB / accN; val dAvg = accDip / accN
-            val spot = if (linSensor != null) steps / 2 else 0 // field changes alone cannot establish movement
+            val spot = if (linSensor != null) steps else 0 // field changes alone cannot establish movement
             if (r > 0) buckets.addLast(Bucket(accX / r, accY / r, accW / accN, bAvg, dAvg, accAllGood, spot))
             while (buckets.size > 40) buckets.removeFirst()
         }
@@ -870,9 +870,9 @@ class MainActivity : Activity(), SensorEventListener, LocationListener {
         avgSpots = n
         avgStdErr = stdErr
         avgCountP = 1.0
-        avgSpotP = min(1.0, n / 5.0)
-        avgErrP = if (stdErr.isNaN()) 0.0 else if (stdErr <= 2.0) 1.0 else 2.0 / stdErr
-        if (n >= 5 && stdErr < 2.0) {
+        avgSpotP = min(1.0, n / 3.0)
+        avgErrP = if (stdErr.isNaN()) 0.0 else if (stdErr <= 2.5) 1.0 else 2.5 / stdErr
+        if (n >= 3 && stdErr < 2.5) {
             anchorAt = now
             offset = Astro.norm180(Math.toDegrees(atan2(sy, sx)))
             src = Src.AVG
@@ -929,7 +929,7 @@ class MainActivity : Activity(), SensorEventListener, LocationListener {
         avgTv.visibility = avgMeter.visibility
         if (!relevant) return
         val n = spotsSeen()
-        val p = if (n < 5) min(1.0, n / 5.0) * 0.8 else min(1.0, 0.8 + 0.2 * avgErrP)   // spots fill 80 %, agreement the rest
+        val p = if (n < 3) min(1.0, n / 3.0) * 0.8 else min(1.0, 0.8 + 0.2 * avgErrP)   // spots fill 80 %, agreement the rest
         val done = src == Src.AVG
         avgMeter.fraction = if (done) 1f else p.toFloat()
         avgMeter.barColor = if (done) GREEN else ORANGE
@@ -941,10 +941,10 @@ class MainActivity : Activity(), SensorEventListener, LocationListener {
                       "✓ متوسط الغرفة جاهز — من $n مجموعات حركة؛ الاتفاق لا يثبت الدقة")
             buckets.isEmpty() && quality == Q.BAD -> t("Room average: paused — too much interference right here. Move a little.",
                                                      "متوسط الغرفة: متوقف — التشويش قوي هنا. تحرّك قليلًا.")
-            n < 5 -> t("Room average $pct% — walk 2–3 steps to another spot ($n of 5 spots)",
-                       "متوسط الغرفة $pct٪ — امشِ خطوتين أو ثلاثًا إلى مكان آخر ($n من 5 أماكن)")
-            else -> t("Room average $pct% — readings still differ, try 1–2 more spots",
-                      "متوسط الغرفة $pct٪ — القراءات ما زالت مختلفة، جرّب مكانًا أو مكانين آخرين")
+            n < 3 -> t("Room average $pct% — take 1 step to another spot ($n of 3 spots)",
+                       "متوسط الغرفة $pct٪ — امشِ خطوة إلى مكان آخر ($n من 3 أماكن)")
+            else -> t("Room average $pct% — readings still differ, try 1 more spot",
+                      "متوسط الغرفة $pct٪ — القراءات ما زالت مختلفة، جرّب مكانًا آخر")
         }
     }
 
