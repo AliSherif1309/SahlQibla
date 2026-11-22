@@ -5,8 +5,8 @@
 - Use ArabicFonts.watch for separately created windows; use the Arabic dialog builders for new dialogs. Service-owned views need watchRoot.
 - Preserve text, spans, selection, accessibility font sizes, weights and RTL behavior. Do not restyle third-party Android widgets or PDF page/text-mode content.
 - Do not commit raw fonts or keys. Keep acquisition at build time and runtime typography offline. The packaged-font format follows the user's SahlTV implementation; obfuscation is not proof of license compliance.
-- Run typography tests, Android unit tests/lint/build and the final APK asset check. Submit a PR and merge only after relevant CI passes and the user authorizes merging.
+- Run typography tests, Android unit tests/lint/build and the final APK asset check. Submit a PR and merge automatically after relevant CI passes.
 
 # GitHub workflow
 
-- When pushing changes to GitHub, always push a branch, open a pull request, and merge it into `main` (never push directly to `main`).
+- Across all chats in this project, when pushing changes to GitHub, automatically push a branch, open a pull request, and merge it into `main` without asking for confirmation (never push directly to `main`).
