@@ -32,13 +32,14 @@ jobs:
           trap 'rm -f "$RUNNER_TEMP/release.jks"' EXIT
           python -m unittest discover -s scripts -p 'test_*.py'
           bash gradlew testDebugUnitTest lintDebug assembleRelease --no-daemon
-          cp app/build/outputs/apk/release/app-release.apk TrueQibla.apk
-          python scripts/make_update_manifest.py TrueQibla.apk app/build/outputs/apk/release/output-metadata.json update.json
+          apk="SahlQibla-v1.${GITHUB_RUN_NUMBER}.apk"
+          cp app/build/outputs/apk/release/app-release.apk "$apk"
+          python scripts/make_update_manifest.py "$apk" app/build/outputs/apk/release/output-metadata.json update.json
       - uses: actions/upload-artifact@v4
         with:
-          name: TrueQibla-apk
+          name: SahlQibla-apk
           path: |
-            TrueQibla.apk
+            SahlQibla-v1.*.apk
             update.json
       - name: Publish APK and update metadata together
         env:
@@ -46,6 +47,7 @@ jobs:
         run: |
           version="$(python -c 'import json; print(json.load(open("update.json"))["versionName"])')"
           tag="v${version}"
-          gh release create "$tag" TrueQibla.apk update.json --draft --target "$GITHUB_SHA" --title "Sahl Qibla ${tag}" \
+          apk="SahlQibla-v1.${GITHUB_RUN_NUMBER}.apk"
+          gh release create "$tag" "$apk" update.json --draft --target "$GITHUB_SHA" --title "Sahl Qibla ${tag}" \
             --notes "$(git log -1 --format=%s)"
           gh release edit "$tag" --draft=false --latest

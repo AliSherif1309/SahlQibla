@@ -2,7 +2,7 @@
 
 A calm Qibla compass that **checks itself** before it guides you. Part of the **Sahl apps** family: Sahl Adhan, Sahl Phone, Sahl Contacts, Sahl Messages, Sahl Files, Sahl Tools, Sahl Sync and Sahl TV.
 
-**⬇ Download:** [latest APK](https://github.com/AliSherif1309/TrueQibla-Android/releases/latest/download/TrueQibla.apk). Android 8 or newer.
+**⬇ Download:** [latest release](https://github.com/AliSherif1309/TrueQibla-Android/releases/latest) (`SahlQibla-v1.x.apk`). Android 8 or newer.
 
 > **Moving from True Qibla (com.aly.trueqibla)?** Sahl Qibla is now signed with the shared Sahl key and uses the package `com.sahl.qibla`, so it installs as a new app. Uninstall the old *True Qibla / Sahl Qibla 1.x* first. Only a few settings are lost.
 

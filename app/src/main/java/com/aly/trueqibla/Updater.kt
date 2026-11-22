@@ -38,7 +38,9 @@ object Updater {
         val assets = j.getJSONArray("assets")
         fun url(name: String) = (0 until assets.length()).map { assets.getJSONObject(it) }
             .firstOrNull { it.getString("name") == name }?.getString("browser_download_url")
-        val apk = url("TrueQibla.apk")?.takeIf { UpdatePolicy.releaseAsset(it) }
+        val apk = (0 until assets.length()).map { assets.getJSONObject(it) }
+            .firstOrNull { it.getString("name").endsWith(".apk") }
+            ?.getString("browser_download_url")?.takeIf { UpdatePolicy.releaseAsset(it) }
         val manifest = url("update.json")?.takeIf { UpdatePolicy.releaseAsset(it) }?.let { json(it) }
         val code = manifest?.optLong("versionCode") ?: 0
         if (apk != null && code > BuildConfig.VERSION_CODE)
