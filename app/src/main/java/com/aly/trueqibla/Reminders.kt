@@ -61,8 +61,7 @@ object Reminders {
             else -> "At $time (in 15 minutes) the sun is over the Kaaba. Any vertical shadow will point exactly away from the Qibla."
         }
         val open = PendingIntent.getActivity(ctx, 0, Intent(ctx, MainActivity::class.java), PendingIntent.FLAG_IMMUTABLE)
-        val n = Notification.Builder(ctx, CHANNEL)
-            .setSmallIcon(R.drawable.ic_notify)
+        val n = SahlNotif.apply(ctx, Notification.Builder(ctx, CHANNEL))
             .setContentTitle(title)
             .setContentText(text)
             .setStyle(Notification.BigTextStyle().bigText(text))
