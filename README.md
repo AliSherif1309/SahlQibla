@@ -1,40 +1,39 @@
-# سهل للقبلة · Sahl Qibla
+<div align="center">
 
-A calm Qibla compass that **checks itself** before it guides you. Part of the **Sahl apps** family: Sahl Adhan, Sahl Phone, Sahl Contacts, Sahl Messages, Sahl Files, Sahl Tools, Sahl Sync and Sahl TV.
+<img src="docs/banner.svg" alt="Sahl Qibla · سهل للقبلة" width="100%"/>
 
-**⬇ Download:** [latest release](https://github.com/AliSherif1309/TrueQibla-Android/releases/latest) (`SahlQibla-v1.x.apk`). Android 8 or newer.
+<br/><br/>
 
-> **Moving from True Qibla (com.aly.trueqibla)?** Sahl Qibla is now signed with the shared Sahl key and uses the package `com.sahl.qibla`, so it installs as a new app. Uninstall the old *True Qibla / Sahl Qibla 1.x* first. Only a few settings are lost.
+[![Download APK](https://img.shields.io/github/v/release/AliSherif1309/SahlQibla?label=Download%20APK&color=0B5D4B&style=for-the-badge)](https://github.com/AliSherif1309/SahlQibla/releases/latest)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/AliSherif1309/SahlQibla/build.yml?label=Build&color=1E8A70&style=for-the-badge)](https://github.com/AliSherif1309/SahlQibla/actions)
+![Bilingual](https://img.shields.io/badge/Language-Arabic%20%26%20English-D4AF37?style=for-the-badge)
+![Privacy](https://img.shields.io/badge/Privacy-100%%20Offline-073D32?style=for-the-badge)
 
-## What it does
-- **Opens straight to the arrow**, with nothing to set up.
-- **Checks itself**: it watches the magnetic field strength and dip, and the age and accuracy of your location. If it can't trust the reading, it says so instead of pointing wrong.
-- **Vibration guidance**: ticks speed up as you turn toward the Qibla, then a double buzz when you're facing it.
-- **Prayer-mat mode**: a dark, dimmed screen with only the arrow and no vibration.
-- **Sun over the Kaaba (رصد القبلة)**: on the two days a year the sun passes over the Kaaba, the app shows the time when every shadow points exactly away from the Qibla. It's a natural check, with an optional reminder that plays the Sahl chime.
-- **Mini globe** (Detailed view): the shortest path from you to Makkah, with the distance.
-- **Arabic / English** (right-to-left for Arabic), **light / dark**, and **Simple / Detailed** views.
+</div>
 
-## Methods
-- **Smart** (default): the best available sensors, with live checks.
-- **Strict**: guides only when the field checks pass.
-- **Room average**: combines readings indoors. It's approximate, and agreement between readings doesn't prove accuracy.
+---
 
-For the most reliable result, stand away from metal, magnets and magnetic phone cases, and hold the phone flat with the top edge pointing ahead. For an independent check, use the sun on a "Sun over the Kaaba" day or a surveyed direction. Details: [ACCURACY_AUDIT.md](ACCURACY_AUDIT.md).
+## ✨ Highlights
 
-## Privacy
-The compass works fully offline. No ads, no tracking and no runtime libraries. The internet is used only to check GitHub for updates, and your location never leaves the phone.
+| Feature | What it gives you |
+|---|---|
+| 🧭 **Instant Qibla Arrow** | Opens straight to the compass arrow with nothing to set up—works completely offline. |
+| 🛡️ **Self-Checking Sensors** | Watches magnetic field strength, dip, and location accuracy; warns you instead of pointing wrong near metal or magnets. |
+| ☀️ **Sun Over the Kaaba** | Shows the exact time on the two annual days when shadows point away from the Qibla for a natural verification check. |
+| 📳 **Haptic & Prayer-Mat Mode** | Gentle vibration ticks speed up as you align, plus a dimmed dark Prayer-Mat mode with zero distractions. |
 
-## Sahl family
-- **Sahl key and Sahl Union:** signed with the same key as every Sahl app, so they can safely share data through the `com.sahl.permission.UNION` signature permission.
-- **Crash report:** if the app ever crashes, a report screen opens with a **Copy** button.
-- **Updates in the app:** it checks once a day. Updates are accepted only from this repository's releases, and only if the checksum, size, package and signing key all match. See [UPDATES.md](UPDATES.md).
+---
 
-## Build
-Every push to `main` runs the tests and lint, then builds a signed APK and publishes it as the latest release.
-Repository secrets (shared by all Sahl apps; never commit the keystore): `KEYSTORE_B64`, `KEYSTORE_PASS`.
+## 📲 Install in Seconds
 
-Local check (Java 17, Android SDK 34): `./gradlew testDebugUnitTest lintDebug assembleDebug --no-daemon`
+1. Tap **[Download Latest APK](https://github.com/AliSherif1309/SahlQibla/releases/latest)** above.
+2. Open the downloaded `.apk` file on your Android phone to install.
+3. **Sahl Qibla** checks for new versions automatically so you stay up to date in one tap.
 
-## License
-[MIT](LICENSE)
+---
+
+## 🌿 The Sahl Apps Family · عائلة تطبيقات سهل
+
+A calm, ad-free, bilingual (**Arabic & English**) suite of everyday Android apps crafted in **Emerald & Gold**:
+
+[🎨 Sahl Theme](https://github.com/AliSherif1309/SahlHome) · [🕌 Sahl Adhan](https://github.com/AliSherif1309/SahlAdhan) · [📞 Sahl Phone](https://github.com/AliSherif1309/SahlPhone) · [👤 Sahl Contacts](https://github.com/AliSherif1309/SahlContacts) · [💬 Sahl Messages](https://github.com/AliSherif1309/SahlMessages) · [📷 Sahl Camera](https://github.com/AliSherif1309/SahlCamera) · [🖼️ Sahl Gallery](https://github.com/AliSherif1309/SahlGallery) · [📁 Sahl Files](https://github.com/AliSherif1309/SahlFiles) · [📄 Sahl PDF](https://github.com/AliSherif1309/SahlPDF) · [🛠️ Sahl Tools](https://github.com/AliSherif1309/SahlTools) · [☁️ Sahl Sync](https://github.com/AliSherif1309/SahlSync) · [📺 Sahl TV](https://github.com/AliSherif1309/SahlTV-Launcher)
