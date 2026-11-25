@@ -21,7 +21,7 @@ import java.net.URL
  * No install permission is needed, which keeps Play Protect calmer.
  */
 object Updater {
-    private const val REPO = "AliSherif1309/TrueQibla-Android"
+    private const val REPO = "AliSherif1309/SahlQibla"
     data class Release(val code: Int, val name: String, val apkUrl: String, val notes: String)
 
     private fun ar(c: Context) = c.resources.configuration.locales[0].language == "ar"

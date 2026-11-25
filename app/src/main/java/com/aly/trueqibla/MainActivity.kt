@@ -547,7 +547,7 @@ class MainActivity : Activity(), SensorEventListener, LocationListener {
             textSize = 15f; setTypeface(typeface, Typeface.BOLD); setTextColor(GREEN); setPadding(dp(4), dp(14), dp(4), dp(8))
             isClickable = true
             setOnClickListener {
-                try { startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/AliSherif1309/TrueQibla-Android"))) } catch (_: Exception) {}
+                try { startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/AliSherif1309/SahlQibla"))) } catch (_: Exception) {}
             }
         })
         settingsView.addView(sectionTitle(t("Sahl Union", "اتحاد سهل")))
