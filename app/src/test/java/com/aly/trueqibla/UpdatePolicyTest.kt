@@ -4,7 +4,7 @@ import org.junit.Assert.*
 import org.junit.Test
 
 class UpdatePolicyTest {
-    private val release = "https://github.com/AliSherif1309/TrueQibla-Android/releases/download/latest/TrueQibla.apk"
+    private val release = "https://github.com/AliSherif1309/SahlQibla/releases/download/latest/TrueQibla.apk"
 
     @Test fun onlyOurHttpsReleaseAssetsAreAllowed() {
         assertTrue(UpdatePolicy.releaseAsset(release))

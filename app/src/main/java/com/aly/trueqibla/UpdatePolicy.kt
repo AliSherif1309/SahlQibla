@@ -5,7 +5,7 @@ import java.security.MessageDigest
 
 /** Small, deterministic rules shared by update discovery and installation. */
 object UpdatePolicy {
-    const val REPOSITORY = "AliSherif1309/TrueQibla-Android"
+    const val REPOSITORY = "AliSherif1309/SahlQibla"
     const val MAX_APK_BYTES = 50L * 1024 * 1024
     const val CHECK_INTERVAL_MS = 24L * 60 * 60 * 1000
 

@@ -34,7 +34,7 @@ object SahlUnionApps {
         UnionApp(listOf("com.sahl.gallery"), "Gallery", "المعرض", "SahlGallery"),
         UnionApp(listOf("com.sahl.files"), "Files", "الملفات", "SahlFiles"),
         UnionApp(listOf("com.sahl.adhan"), "Adhan", "الأذان", "SahlAdhan"),
-        UnionApp(listOf("com.sahl.qibla", "com.aly.trueqibla"), "Qibla", "القبلة", "TrueQibla-Android"),
+        UnionApp(listOf("com.sahl.qibla", "com.aly.trueqibla"), "Qibla", "القبلة", "SahlQibla"),
         UnionApp(listOf("com.sahl.tools"), "Tools", "الأدوات", "SahlTools"),
         UnionApp(listOf("com.aly.sahlsync"), "Sync", "المزامنة", "SahlSync"),
         UnionApp(listOf("com.aly.sahlpdf", "com.sahl.pdf"), "PDF", "PDF", "SahlPDF"),
