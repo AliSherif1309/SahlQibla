@@ -25,7 +25,9 @@
         <package android:name="com.sahl.tools" />
         <package android:name="com.aly.sahlsync" />
         <package android:name="com.aly.trueqibla" />
+        <package android:name="com.aly.sahlpdf" />
         <package android:name="com.sahl.pdf" />
+        <package android:name="com.sahl.home" />
     </queries>
 
     <application android:name="com.aly.typography.ArabicApplication"
